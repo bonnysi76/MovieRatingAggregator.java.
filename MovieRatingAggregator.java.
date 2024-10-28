@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class MovieRatingAggregator {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the user
+        Scanner scanner = new Scanner(System.in);
+        
+        // Step 1: Rating Collector - Ask the user for the number of ratings
+        System.out.print("How many ratings would you like to input? ");
+        int numberOfRatings = scanner.nextInt();
+        
+        // Create an array to store the ratings
+        int[] ratings = new int[numberOfRatings];
+        
+        // Step 2: Rating Input - Use a for-loop to collect ratings from the user
+        for (int i = 0; i < numberOfRatings; i++) {
+            int rating;
+            do {
+                System.out.print("Enter rating " + (i + 1) + " (1-5): ");
+                rating = scanner.nextInt();
+            } while (rating < 1 || rating > 5); // Ensure the rating is within the correct range
+            ratings[i] = rating;
+        }
+        
+        // Step 3: Average Calculation - Sum the ratings and calculate the average
+        int sum = 0;
+        for (int i = 0; i < ratings.length; i++) {
+            sum += ratings[i];
+        }
+        double averageRating = (double) sum / numberOfRatings;
+        
+        // Step 4: Result Output - Print the average rating
+        System.out.printf("The average rating is: %.1f\n", averageRating);
+        
+        // Close the scanner
+        scanner.close();
+    }
+}
